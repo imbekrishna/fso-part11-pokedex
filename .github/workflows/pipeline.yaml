@@ -27,6 +27,7 @@ jobs:
           wait-on: http://localhost:5000
   
   push-to-space:
+    if: ${{ github.event_name == 'push' }}
     needs: simple_deployment_pipeline
     runs-on: ubuntu-20.04
     steps:
