@@ -65,7 +65,8 @@ jobs:
         if: success()
         with:
           severity: info
-          details: Deployed Successfully
+          text: A new version deployed
+          description: Deployment Succeeded.
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
       - name: Discord Webhook Notify
@@ -73,7 +74,8 @@ jobs:
         if: failure()
         with:
           severity: error
-          details: Deployment Error
+          description: Deployment Error
+          text: Build failed
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
      
             
