@@ -59,3 +59,21 @@ jobs:
           access_token: ${{ secrets.SPACE_ACCESS_TOKEN }}
           project_id: ${{ secrets.SPACE_PROJECT_ID }}
           space_push: true
+
+      - name: Discord Webhook Notify
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        if: success()
+        with:
+          severity: info
+          details: Deployed Successfully
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+
+      - name: Discord Webhook Notify
+        uses: rjstone/discord-webhook-notify@v1.0.4
+        if: failure()
+        with:
+          severity: error
+          details: Deployment Error
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+     
+            
